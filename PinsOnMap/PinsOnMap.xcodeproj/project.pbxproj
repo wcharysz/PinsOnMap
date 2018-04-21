@@ -97,8 +97,12 @@
 		A5CE5C62208BCDC100498514 /* PinsOnMap */ = {
 			isa = PBXGroup;
 			children = (
+				A5CE5C96208BD02C00498514 /* Extensions */,
+				A5CE5C95208BCFF900498514 /* Controllers */,
+				A5CE5C94208BCFF000498514 /* Views */,
+				A5CE5C92208BCFDC00498514 /* Models */,
+				A5CE5C91208BCFCA00498514 /* ViewControllers */,
 				A5CE5C63208BCDC100498514 /* AppDelegate.swift */,
-				A5CE5C65208BCDC100498514 /* ViewController.swift */,
 				A5CE5C67208BCDC100498514 /* Main.storyboard */,
 				A5CE5C6A208BCDC100498514 /* Assets.xcassets */,
 				A5CE5C6C208BCDC100498514 /* LaunchScreen.storyboard */,
@@ -123,6 +127,42 @@
 				A5CE5C85208BCDC100498514 /* Info.plist */,
 			);
 			path = PinsOnMapUITests;
+			sourceTree = "<group>";
+		};
+		A5CE5C91208BCFCA00498514 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A5CE5C65208BCDC100498514 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A5CE5C92208BCFDC00498514 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A5CE5C94208BCFF000498514 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A5CE5C95208BCFF900498514 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A5CE5C96208BD02C00498514 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
