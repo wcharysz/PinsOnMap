@@ -20,6 +20,7 @@
 		A5CE5C9F208BD63100498514 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE5C9E208BD63100498514 /* Area.swift */; };
 		A5CE5CA1208D10A100498514 /* LifeSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE5CA0208D10A100498514 /* LifeSpan.swift */; };
 		A5CE5CA3208D148B00498514 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE5CA2208D148B00498514 /* DateFormatterExtension.swift */; };
+		A5CE5CA5208D1E4100498514 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE5CA4208D1E4100498514 /* Networking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		A5CE5C9E208BD63100498514 /* Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		A5CE5CA0208D10A100498514 /* LifeSpan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeSpan.swift; sourceTree = "<group>"; };
 		A5CE5CA2208D148B00498514 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
+		A5CE5CA4208D1E4100498514 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 		A5CE5C95208BCFF900498514 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A5CE5CA4208D1E4100498514 /* Networking.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				A5CE5C98208BD37500498514 /* Place.swift in Sources */,
 				A5CE5C66208BCDC100498514 /* ViewController.swift in Sources */,
 				A5CE5C64208BCDC100498514 /* AppDelegate.swift in Sources */,
+				A5CE5CA5208D1E4100498514 /* Networking.swift in Sources */,
 				A5CE5C9B208BD46900498514 /* Places.swift in Sources */,
 				A5CE5C9F208BD63100498514 /* Area.swift in Sources */,
 				A5CE5C9D208BD52700498514 /* Coordinates.swift in Sources */,
