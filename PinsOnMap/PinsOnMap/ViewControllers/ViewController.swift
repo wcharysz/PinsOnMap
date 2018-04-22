@@ -13,6 +13,10 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    lazy var viewModel: ViewModel = {
+        return ViewModel(self)
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +28,16 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-
+    //MARK: - UISearchBarDelegate
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let query = searchBar.text else {
+            return
+        }
+        
+        viewModel.downloadPlaces(forQuery: query) { (places) in
+            
+        }
+    }
 }
 

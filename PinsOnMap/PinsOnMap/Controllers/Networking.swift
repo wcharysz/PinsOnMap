@@ -10,7 +10,7 @@ import Foundation
 
 class Networking {
     
-    static let baseURLString = "http://musicbrainz.org/ws/2/"
+    static let baseURLString = "https://musicbrainz.org/ws/2/"
     
     enum ApiURL: String {
         case place = "place/?query="
