@@ -29,8 +29,12 @@ class Networking {
         return urlString
     }
     
-    func downloadPlaces(forName name: String, completion: @escaping (_ places: Places?) -> Void)  {
-        guard let url = URL(string: getURLString(for: .place)) else {
+    func downloadPlaces(forName name: String, queryLimit limit: Int, offsetNumber offset: Int, completion: @escaping (_ places: Places?) -> Void)  {
+        var urlString = getURLString(for: .place) + name
+        urlString += "&limit=" + String(limit)
+        urlString += "&offset=" + String(offset)
+        
+        guard let url = URL(string: urlString) else {
             completion(nil)
             return
         }

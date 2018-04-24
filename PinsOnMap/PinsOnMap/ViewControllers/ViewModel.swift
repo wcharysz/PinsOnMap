@@ -16,12 +16,34 @@ class ViewModel {
         delegate = viewController
     }
     
+    lazy var openFrom: Date? = {
+        var dateComponenets = DateComponents()
+        dateComponenets.calendar = Calendar(identifier: .gregorian)
+        dateComponenets.year = 1990
+        
+        return dateComponenets.date
+    }()
+    
+    var places: [Places] = [] {
+        didSet {
+            places = places.filter({ (group) -> Bool in
+                return group.places?.filter({ (place) -> Bool in
+                    guard let begin = place
+                    
+                    return place.lifeSpan?.begin > openFrom
+                })
+            })
+        }
+    }
+    
     func downloadPlaces(forQuery query: String, completion:@escaping (_ places: Places?) -> Void) {
         let networking = Networking()
         
-        networking.downloadPlaces(forName: query) { (places) in
-            completion(places)
-        }
+        places.removeAll()
+        
+        networking.downloadPlaces(forName: query, queryLimit: 100, offsetNumber: <#T##Int#>, completion: <#T##(Places?) -> Void#>)
+
+ 
     }
     
 }
