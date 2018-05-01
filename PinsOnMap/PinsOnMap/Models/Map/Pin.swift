@@ -14,14 +14,18 @@ class Pin: NSObject, MKAnnotation {
     var title: String?
     var subtitle: String?
     
-    init?(_ place: Place) {
-        guard let latitude = place.coordinates?.latitude, let longitude = place.coordinates?.longitude else {
+    init?(_ place: Place?) {
+        
+        guard let latitudeString = place?.coordinates?.latitude,
+            let latitude = Double(latitudeString),
+            let longitudeString = place?.coordinates?.longitude,
+            let longitude = Double(longitudeString) else {
             return nil
         }
         
-        self.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-        self.title = place.name
-        self.subtitle = place.address
+        self.coordinate = CLLocationCoordinate2DMake(latitude, longitude) 
+        self.title = place?.name
+        self.subtitle = place?.address
         
         super.init()
     }

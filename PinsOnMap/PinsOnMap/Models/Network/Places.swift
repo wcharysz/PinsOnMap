@@ -27,4 +27,20 @@ struct Places: PlacesProtocol {
         case offset
         case places
     }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        count = try container.decode(Int.self, forKey: .count)
+        offset = try container.decode(Int.self, forKey: .offset)
+        places = try container.decode([Place].self, forKey: .places)
+        
+        let createdString = try container.decode(String.self, forKey: .created)
+        let formatter = ISO8601DateFormatter()
+        
+        //remove miliseconds
+        let range = createdString.startIndex..<createdString.endIndex
+        let trimmedDate = createdString.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression, range: range)
+        
+        created = formatter.date(from: trimmedDate)
+    }
 }

@@ -33,6 +33,7 @@ class Networking {
         var urlString = getURLString(for: .place) + name
         urlString += "&limit=" + String(limit)
         urlString += "&offset=" + String(offset)
+        urlString += "&fmt=json"
         
         guard let url = URL(string: urlString) else {
             completion(nil)
@@ -44,6 +45,9 @@ class Networking {
                 completion(nil)
                 return
             }
+            
+            let text = String(data: data, encoding: .utf8)
+            print("RESPONSE ",text ?? "")
             
             do {
                 let result = try self.decoder.decode(Places.self, from: data)

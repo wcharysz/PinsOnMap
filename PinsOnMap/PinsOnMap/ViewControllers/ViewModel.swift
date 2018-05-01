@@ -24,26 +24,52 @@ class ViewModel {
         return dateComponenets.date
     }()
     
+    let queryLimit = 100
+    let queryOffset = 20
+    
+    var numberOfQueries: Int {
+        return queryLimit / queryOffset
+    }
+    
     var places: [Places] = [] {
         didSet {
-            places = places.filter({ (group) -> Bool in
-                return group.places?.filter({ (place) -> Bool in
-                    guard let begin = place
-                    
-                    return place.lifeSpan?.begin > openFrom
-                })
-            })
+            let currentPlaces = places
+            
+            for place in currentPlaces {
+                if let newPins = place.places?.map({ (spot) -> Pin? in
+                    return Pin(spot)
+                }) {
+                    mapPins.append(contentsOf: newPins)
+                }
+            }
         }
     }
     
-    func downloadPlaces(forQuery query: String, completion:@escaping (_ places: Places?) -> Void) {
+    var mapPins: [Pin?] = [] {
+        didSet {
+            let currentPins = mapPins
+            let annotations = currentPins.compactMap{$0}
+            
+            DispatchQueue.main.async {
+                self.delegate.mapView.addAnnotations(annotations)
+                self.delegate.mapView.showAnnotations(annotations, animated: true)
+            }
+        }
+    }
+    
+    func downloadPlaces(forQuery query: String) {
         let networking = Networking()
         
         places.removeAll()
+        mapPins.removeAll()
         
-        networking.downloadPlaces(forName: query, queryLimit: 100, offsetNumber: <#T##Int#>, completion: <#T##(Places?) -> Void#>)
-
- 
+        for offset in 0...numberOfQueries {
+            networking.downloadPlaces(forName: query, queryLimit: 100, offsetNumber: offset) { (places) in
+                if let newPlaces = places {
+                    self.places.append(newPlaces)
+                }
+            }
+        }
     }
     
 }

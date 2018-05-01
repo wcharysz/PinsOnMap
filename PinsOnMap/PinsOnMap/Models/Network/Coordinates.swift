@@ -10,13 +10,13 @@ import Foundation
 import CoreLocation
 
 protocol CoordinatesProtocol: Codable {
-    var latitude: CLLocationDegrees? {get set}
-    var longitude: CLLocationDegrees? {get set}
+    var latitude: String? {get set}
+    var longitude: String? {get set}
 }
 
 struct Coordinates: CoordinatesProtocol {
-    var latitude: CLLocationDegrees?
-    var longitude: CLLocationDegrees?
+    var latitude: String?
+    var longitude: String?
     
     enum CodingKeys: String, CodingKey {
         case latitude

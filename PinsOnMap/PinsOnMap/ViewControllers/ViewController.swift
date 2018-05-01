@@ -35,9 +35,10 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             return
         }
         
-        viewModel.downloadPlaces(forQuery: query) { (places) in
-            
-        }
+        let annotations = viewModel.mapPins.compactMap{$0}
+        mapView.removeAnnotations(annotations)
+        viewModel.downloadPlaces(forQuery: query)
+        searchBar.resignFirstResponder()
     }
 }
 

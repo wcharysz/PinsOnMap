@@ -9,14 +9,14 @@
 import Foundation
 
 protocol LifeSpanProtocol: Codable {
-    var begin: Date {get set}
-    var end: Date {get set}
+    var begin: Date? {get set}
+    var end: Date? {get set}
     var isEnded: Bool {get set}
 }
 
 struct LifeSpan: LifeSpanProtocol {
-    var begin: Date
-    var end: Date
+    var begin: Date?
+    var end: Date?
     var isEnded = false
     
     enum CodingKeys: String, CodingKey {
@@ -27,21 +27,27 @@ struct LifeSpan: LifeSpanProtocol {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        isEnded = try container.decode(Bool.self, forKey: .isEnded)
-        let beginString = try container.decode(String.self, forKey: .begin)
         
-        guard let beginDate = DateFormatter.yyyy.date(from: beginString) else {
-            throw DecodingError.dataCorruptedError(forKey: .begin, in: container, debugDescription: "Begin date format does not match yyyy")
+        do {
+            isEnded = try container.decode(Bool.self, forKey: .isEnded)
+        } catch {
+            isEnded = false
         }
         
-        begin = beginDate
-        
-        let endString = try container.decode(String.self, forKey: .end)
-        
-        guard let endDate = DateFormatter.yyyyMM.date(from: endString) else {
-            throw DecodingError.dataCorruptedError(forKey: .end, in: container, debugDescription: "End date format does not match yyyy-MM")
+        do {
+            let beginString = try container.decode(String.self, forKey: .begin)
+            let beginDate = DateFormatter.yyyy.date(from: beginString)
+            begin = beginDate
+        } catch {
+            begin = nil
         }
-        
-        end = endDate
+
+        do {
+            let endString = try container.decode(String.self, forKey: .end)
+            let endDate = DateFormatter.yyyyMM.date(from: endString)
+            end = endDate
+        } catch {
+            end = nil
+        }
     }
 }
