@@ -10,8 +10,8 @@ import Foundation
 
 protocol PlaceProtocol: Codable {
     var pid: String? {get set}
-    var type: String {get set}
-    var score: Int? {get set}
+    var type: String? {get set}
+    var score: String? {get set}
     var name: String? {get set}
     var address: String? {get set}
     var coordinates: Coordinates? {get set}
@@ -21,8 +21,8 @@ protocol PlaceProtocol: Codable {
 
 struct Place: PlaceProtocol {
     var pid: String?
-    var type: String
-    var score: Int?
+    var type: String?
+    var score: String?
     var name: String?
     var address: String?
     var coordinates: Coordinates?

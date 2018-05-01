@@ -21,6 +21,8 @@
 		A5CE5CA1208D10A100498514 /* LifeSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE5CA0208D10A100498514 /* LifeSpan.swift */; };
 		A5CE5CA3208D148B00498514 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE5CA2208D148B00498514 /* DateFormatterExtension.swift */; };
 		A5CE5CA5208D1E4100498514 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE5CA4208D1E4100498514 /* Networking.swift */; };
+		A5CE5CA7208D224100498514 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE5CA6208D224100498514 /* ViewModel.swift */; };
+		A5CE5CAA208D255400498514 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE5CA9208D255400498514 /* Pin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		A5CE5CA0208D10A100498514 /* LifeSpan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeSpan.swift; sourceTree = "<group>"; };
 		A5CE5CA2208D148B00498514 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		A5CE5CA4208D1E4100498514 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		A5CE5CA6208D224100498514 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		A5CE5CA9208D255400498514 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				A5CE5C65208BCDC100498514 /* ViewController.swift */,
+				A5CE5CA6208D224100498514 /* ViewModel.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 		A5CE5C92208BCFDC00498514 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A5CE5CA8208D254600498514 /* Map */,
 				A5CE5C99208BD3CB00498514 /* Network */,
 			);
 			path = Models;
@@ -192,6 +198,14 @@
 				A5CE5C9A208BD46900498514 /* Places.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		A5CE5CA8208D254600498514 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				A5CE5CA9208D255400498514 /* Pin.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +342,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5CE5CA7208D224100498514 /* ViewModel.swift in Sources */,
+				A5CE5CAA208D255400498514 /* Pin.swift in Sources */,
 				A5CE5C98208BD37500498514 /* Place.swift in Sources */,
 				A5CE5C66208BCDC100498514 /* ViewController.swift in Sources */,
 				A5CE5C64208BCDC100498514 /* AppDelegate.swift in Sources */,
