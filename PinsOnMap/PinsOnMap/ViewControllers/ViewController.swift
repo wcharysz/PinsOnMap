@@ -26,11 +26,6 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         mapView.register(MKPinAnnotationView.self, forAnnotationViewWithReuseIdentifier: pinViewIdentifier)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     //MARK: - UISearchBarDelegate
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

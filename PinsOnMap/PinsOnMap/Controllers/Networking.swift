@@ -46,9 +46,6 @@ class Networking {
                 return
             }
             
-            let text = String(data: data, encoding: .utf8)
-            print("RESPONSE ",text ?? "")
-            
             do {
                 let result = try self.decoder.decode(Places.self, from: data)
                 completion(result)
