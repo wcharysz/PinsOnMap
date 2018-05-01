@@ -36,8 +36,17 @@ class ViewModel {
             let currentPlaces = places
             
             for place in currentPlaces {
-                if let newPins = place.places?.map({ (spot) -> Pin? in
-                    return Pin(spot)
+                
+                let filteredPlaces = place.places?.filter({ (spot) -> Bool in
+                    guard let begin = spot.lifeSpan?.begin, let openFrom = openFrom else {
+                        return false
+                    }
+                    
+                    return begin >= openFrom
+                })
+                
+                if let newPins = filteredPlaces?.map({ (spot) -> Pin? in
+                    return Pin(spot, openFrom: openFrom)
                 }) {
                     mapPins.append(contentsOf: newPins)
                 }
@@ -53,6 +62,12 @@ class ViewModel {
             DispatchQueue.main.async {
                 self.delegate.mapView.addAnnotations(annotations)
                 self.delegate.mapView.showAnnotations(annotations, animated: true)
+                
+                for annotation in annotations {
+                    Timer.scheduledTimer(withTimeInterval: annotation.lifeSpan, repeats: false, block: { (timer) in
+                        self.delegate.mapView.removeAnnotation(annotation)
+                    })
+                }
             }
         }
     }
