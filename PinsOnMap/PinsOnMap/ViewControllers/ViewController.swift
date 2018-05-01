@@ -51,5 +51,9 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         
         return pinView
     }
+    
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        searchBar.resignFirstResponder()
+    }
 }
 
