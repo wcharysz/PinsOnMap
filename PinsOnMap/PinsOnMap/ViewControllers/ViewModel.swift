@@ -66,6 +66,8 @@ class ViewModel {
                 for annotation in annotations {
                     Timer.scheduledTimer(withTimeInterval: annotation.lifeSpan, repeats: false, block: { (timer) in
                         self.delegate.mapView.removeAnnotation(annotation)
+                        let remaining = self.delegate.mapView.annotations
+                        self.delegate.mapView.showAnnotations(remaining, animated: true)
                     })
                 }
             }
