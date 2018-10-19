@@ -22,4 +22,10 @@ struct Coordinates: CoordinatesProtocol {
         case latitude
         case longitude
     }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        latitude = try container.decodeIfPresent(String.self, forKey: .latitude)
+        longitude = try container.decodeIfPresent(String.self, forKey: .longitude)
+    }
 }

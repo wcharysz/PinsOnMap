@@ -30,9 +30,9 @@ struct Places: PlacesProtocol {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        count = try container.decode(Int.self, forKey: .count)
-        offset = try container.decode(Int.self, forKey: .offset)
-        places = try container.decode([Place].self, forKey: .places)
+        count = try container.decodeIfPresent(Int.self, forKey: .count)
+        offset = try container.decodeIfPresent(Int.self, forKey: .offset)
+        places = try container.decodeIfPresent([Place].self, forKey: .places)
         
         let createdString = try container.decode(String.self, forKey: .created)
         let formatter = ISO8601DateFormatter()
