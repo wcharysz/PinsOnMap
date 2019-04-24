@@ -37,12 +37,14 @@ class ViewModel {
             
             for place in currentPlaces {
                 
-                let filteredPlaces = place.places?.filter({ (spot) -> Bool in
+                var filteredPlaces = place.places
+                
+                filteredPlaces?.removeAll(where: { (spot) -> Bool in
                     guard let begin = spot.lifeSpan?.begin, let openFrom = openFrom else {
-                        return false
+                        return true
                     }
                     
-                    return begin >= openFrom
+                    return begin <= openFrom
                 })
                 
                 if let newPins = filteredPlaces?.map({ (spot) -> Pin? in
