@@ -19,6 +19,21 @@ protocol PlaceProtocol: Codable {
     var lifeSpan: LifeSpan? {get set}
 }
 
+/**
+ This struct is used during JSON parsing and conforms to Codable protocol.
+ 
+ It represents the Place data and contains following properties:
+ - pid: The Place Identification string.
+ - type: The Place type string.
+ - score: The Place score number.
+ - name: The Place name string.
+ - address: The Place address string.
+ - coordinates: The Place latitude and longitude.
+ - area: The Place Area model.
+ - lifeSpan: The Place LifeSpan model.
+ 
+ All parameters can be nil, but in such case this object would be useless.
+ */
 struct Place: PlaceProtocol {
     var pid: String?
     var type: String?
