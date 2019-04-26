@@ -14,9 +14,18 @@ protocol AreaProtocol: Codable {
     var sortName: String? {get set}
 }
 
+/**
+ This struct is used during JSON parsing and conforms to Codable protocol. It contains: pid (place Id), name and sortName.
+ */
 struct Area: AreaProtocol {
+    
+    /// A Place identification string.
     var pid: String?
+    
+    /// A Place name.
     var name: String?
+    
+    /// A Place sort name.
     var sortName: String?
     
     enum CodingKeys: String, CodingKey {

@@ -16,7 +16,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     
     let pinViewIdentifier = "pinViewIdentifier"
     
-    lazy var viewModel: ViewModel = {
+    lazy var viewModel: ViewModel = { [unowned self] in
         return ViewModel(self)
     }()
 

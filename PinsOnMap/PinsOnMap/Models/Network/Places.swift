@@ -15,10 +15,21 @@ protocol PlacesProtocol: Codable {
     var places: [Place]? {get set}
 }
 
+/**
+ This struct is used during JSON parsing and conforms to Codable protocol. It's a container for the Places objects.
+*/
 struct Places: PlacesProtocol {
+    
+    /// The creation date of the Places list. It's received from the server.
     var created: Date?
+    
+    /// The count number of the chunk.
     var count: Int?
+    
+    /// The offset number of the downloaded Places.
     var offset: Int?
+    
+    /// The array of Place's model.
     var places: [Place]?
     
     enum CodingKeys: String, CodingKey {
@@ -30,14 +41,14 @@ struct Places: PlacesProtocol {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        count = try container.decode(Int.self, forKey: .count)
-        offset = try container.decode(Int.self, forKey: .offset)
-        places = try container.decode([Place].self, forKey: .places)
+        count = try container.decodeIfPresent(Int.self, forKey: .count)
+        offset = try container.decodeIfPresent(Int.self, forKey: .offset)
+        places = try container.decodeIfPresent([Place].self, forKey: .places)
         
         let createdString = try container.decode(String.self, forKey: .created)
         let formatter = ISO8601DateFormatter()
         
-        //remove miliseconds
+        //remove miliseconds, otherwise ISO8601DateFormatter won't convert it.
         let range = createdString.startIndex..<createdString.endIndex
         let trimmedDate = createdString.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression, range: range)
         

@@ -9,6 +9,15 @@
 import Foundation
 
 extension DateFormatter {
+    /**
+     This is a DateFormatter based only on 4 digit year number - "yyyy".
+     
+     It has following configuration:
+     
+     - The calendar used is ISO8601,
+     - The time zone is UTC,
+     - The locale settings is "en_US_POSIX".
+    */
     static let yyyy: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy"
@@ -19,6 +28,15 @@ extension DateFormatter {
         return formatter
     }()
     
+    /**
+     This is a DateFormatter based only on 4 digit year number and 2 digit month number - "yyyy-MM".
+     
+     It has following configuration:
+     
+     - The calendar used is ISO8601,
+     - The time zone is UTC,
+     - The locale settings is "en_US_POSIX".
+    */
     static let yyyyMM: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM"

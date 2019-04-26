@@ -14,9 +14,18 @@ protocol LifeSpanProtocol: Codable {
     var isEnded: Bool {get set}
 }
 
+/**
+ This struct is used during JSON parsing and conforms to Codable protocol. It contains a begin and the end date of the Place.
+ */
 struct LifeSpan: LifeSpanProtocol {
+    
+    /// The begin date of the Place. It's based on a year value only.
     var begin: Date?
+    
+    /// The end date of the Place. It's based on a year and month values only.
     var end: Date?
+    
+    /// The boolean value if the Place isn't operating anymore.
     var isEnded = false
     
     enum CodingKeys: String, CodingKey {
