@@ -45,13 +45,18 @@ struct Places: PlacesProtocol {
         offset = try container.decodeIfPresent(Int.self, forKey: .offset)
         places = try container.decodeIfPresent([Place].self, forKey: .places)
         
-        let createdString = try container.decode(String.self, forKey: .created)
+        var createdString = try container.decode(String.self, forKey: .created)
         let formatter = ISO8601DateFormatter()
         
-        //remove miliseconds, otherwise ISO8601DateFormatter won't convert it.
-        let range = createdString.startIndex..<createdString.endIndex
-        let trimmedDate = createdString.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression, range: range)
+        if #available(iOS 11, *) {
+           formatter.formatOptions.insert(.withFractionalSeconds)
+        } else {
+            //remove miliseconds, otherwise ISO8601DateFormatter won't convert it.
+            let range = createdString.startIndex..<createdString.endIndex
+            let trimmedDate = createdString.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression, range: range)
+            createdString = trimmedDate
+        }
         
-        created = formatter.date(from: trimmedDate)
+        created = formatter.date(from: createdString)
     }
 }
